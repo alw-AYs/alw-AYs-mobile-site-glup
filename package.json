@@ -22,7 +22,9 @@
   "devDependencies": {
     "browser-sync": "^2.12.5",
     "browserify": "^13.0.0",
+    "createjs-soundjs": "^0.6.2",
     "del": "^2.2.0",
+    "gsap": "^1.18.3",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-cached": "^1.1.0",
@@ -38,6 +40,10 @@
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
+    "hammerjs": "^2.0.8",
+    "jquery": "^2.2.3",
+    "jshint": "^2.9.2",
+    "pixi.js": "^3.0.11",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
