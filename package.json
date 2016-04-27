@@ -1,0 +1,44 @@
+{
+  "name": "alw-ays_mobile_site_glup",
+  "version": "1.0.0",
+  "description": "alw-AY's Mobile Site Glup",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alw-AYs/alw-AYs-mobile-site-glup.git"
+  },
+  "author": {
+    "name": "alw-AY's",
+    "email": "ysc1217@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alw-AYs/alw-AYs-mobile-site-glup/issues"
+  },
+  "homepage": "https://github.com/alw-AYs/alw-AYs-mobile-site-glup#readme",
+  "devDependencies": {
+    "browser-sync": "^2.12.5",
+    "browserify": "^13.0.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cached": "^1.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-file-include": "^0.13.7",
+    "gulp-filter": "^4.0.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev-append": "^0.1.6",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-uglify": "^1.5.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
