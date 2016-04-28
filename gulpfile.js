@@ -20,6 +20,7 @@ var gulp = require('gulp'), // 必须先引入gulp插件
   jshint = require('gulp-jshint'), // js 语法校验
   rev = require('gulp-rev-append'), // 插入文件指纹（MD5）
   cssnano = require('gulp-cssnano'), // CSS 压缩
+  tinypng = require('gulp-tinypng-compress'),
   imagemin = require('gulp-imagemin'), // 图片优化
   browserSync = require('browser-sync'), // 保存自动刷新
   fileinclude = require('gulp-file-include'), // 可以 include html 文件
@@ -65,6 +66,7 @@ gulp.task('styleReload', ['sass', 'css'], function() {
     })); // 使用无刷新 browserSync 注入 CSS
 });
 
+//browserify
 gulp.task("browserify", function() {
   var b = browserify({
     entries: "src/js/main.js",
@@ -74,28 +76,25 @@ gulp.task("browserify", function() {
   return b.bundle()
     .pipe(source("main.js"))
     .pipe(buffer())
+    .pipe(uglify())
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist/js"));
+});i
+
+
+//tinypng
+gulp.task('tinypng', function () {
+  gulp.src('src/img/**/*.{png,jpg,jpeg}')
+    .pipe(tinypng({
+      key: '84eA9r0V_ZvRmB-sf3MjFdYgSmfniV0-',
+      sigFile: 'src/img/.tinypng-sigs',
+      log: true
+    }))
+    .pipe(gulp.dest('dist/img'));
 });
-
-
-// script （拷贝 *.min.js，常规 js 则输出压缩与未压缩两个版本）
-//gulp.task('script', function() {
-//return gulp.src(['src/js/**/*.js'])
-//.pipe(cached('script'))
-//.pipe(gulp.dest('dist/js'))
-//.pipe(filter(['*', '!*.min.js'])) // 筛选出管道中的非 *.min.js 文件
-//// .pipe(jshint('.jshintrc')) // js的校验与合并，根据需要开启
-//// .pipe(jshint.reporter('default'))
-//// .pipe(concat('main.js'))
-//// .pipe(gulp.dest('dist/js'))
-//.pipe(rename({suffix: '.min'}))
-//.pipe(uglify())
-//.pipe(gulp.dest('dist/js'))
-//});
 
 // image
 gulp.task('image', function() {
@@ -124,7 +123,7 @@ gulp.task('clean', function() {
 });
 
 // build 需要插入资源指纹（MD5），html 最后执行
-gulp.task('build', ['sass', 'css', 'script', 'image'], function() {
+gulp.task('build', ['sass', 'css', 'browserify', 'tinypng'], function() {
   gulp.start('html');
 });
 
@@ -145,8 +144,8 @@ gulp.task('watch', function() {
   gulp.watch('src/sass/**/*.scss', ['styleReload']);
   // 监控 CSS 文件，有变动则执行CSS注入
   gulp.watch('src/css/**/*.css', ['styleReload']);
-  // 监控 js 文件，有变动则执行 script 任务
-  gulp.watch('src/js/**/*.js', ['script']);
+  // 监控 js 文件，有变动则执行 browserify 任务
+  gulp.watch('src/js/**/*.js', ['browserify']);
   // 监控图片文件，有变动则执行 image 任务
   gulp.watch('src/img/**/*', ['image']);
   // 监控 html 文件，有变动则执行 html 任务
