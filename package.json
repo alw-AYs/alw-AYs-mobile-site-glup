@@ -1,12 +1,20 @@
 {
-  "name": "abb-201605",
+  "name": "alw-ays_mobile_site_glup",
   "version": "1.0.0",
-  "description": "ABB mobile site 201605",
+  "description": "alw-AY's Mobile Site Glup",
   "private": true,
   "author": {
     "name": "alw-AY's",
     "email": "ysc1217@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alw-AYs/alw-AYs-mobile-site-glup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alw-AYs/alw-AYs-mobile-site-glup/issues"
+  },
+  "homepage": "https://github.com/alw-AYs/alw-AYs-mobile-site-glup#readme",
   "devDependencies": {
     "browser-sync": "^2.12.5",
     "browserify": "^13.0.0",
